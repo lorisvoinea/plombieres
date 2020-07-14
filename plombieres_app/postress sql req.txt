@@ -1,0 +1,42 @@
+-- Table: public.Commande
+
+-- DROP TABLE public."Commande";
+
+CREATE TABLE public."Commande"
+(
+    id integer NOT NULL,
+    "idPersonne" integer NOT NULL,
+    total integer NOT NULL,
+    offre integer NOT NULL,
+    CONSTRAINT "Commande_pkey" PRIMARY KEY (id),
+    CONSTRAINT "Personne_fkey" FOREIGN KEY ("idPersonne")
+        REFERENCES public."Personne" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Commande"
+    OWNER to postgres;
+
+
+
+-- Table: public.Personne
+
+-- DROP TABLE public."Personne";
+
+CREATE TABLE public."Personne"
+(
+    nom character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    prenom character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    id integer NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Personne_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public."Personne"
+    OWNER to postgres;
