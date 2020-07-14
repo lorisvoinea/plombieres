@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, Personne} from '../service/http-client.service';
+import { FormControl, FormControlName, Validators } from '@angular/forms'
+import { FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-panier',
@@ -8,6 +10,13 @@ import { HttpClientService, Personne} from '../service/http-client.service';
 })
 export class PanierComponent implements OnInit {
 
+  personneForm = new FormGroup({
+    nom : new FormControl("",Validators.required),
+    prenom : new FormControl("",Validators.required),
+    email : new FormControl("",[Validators.required, Validators.email])
+  })
+  
+
   panier : number[];
   nbArticles : number;
   nb1: number;
@@ -15,7 +24,7 @@ export class PanierComponent implements OnInit {
   nb3: number;
   nb4: number;
   total: number;
-  private personne: Personne = new Personne(0,"","","");
+  private personne: Personne = new Personne("","","");
 
   constructor(private httpClientService: HttpClientService) { 
     
@@ -50,9 +59,13 @@ export class PanierComponent implements OnInit {
   }
 
   creerPersonne(): void {
+    this.personne.nom=this.personneForm.controls.nom.value;
+    this.personne.prenom=this.personneForm.controls.prenom.value;
+    this.personne.email=this.personneForm.controls.email.value;
+    console.log(this.personne);
     this.httpClientService.creerPersonne(this.personne)
         .subscribe( data => {
-          alert("Employe cree");
+          alert(this.personne);
         });
 
   };

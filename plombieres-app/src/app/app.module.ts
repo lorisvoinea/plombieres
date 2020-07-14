@@ -11,6 +11,8 @@ import { PanierComponent } from './panier/panier.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientService } from './service/http-client.service';
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HttpClientService } from './service/http-client.service';
   imports: [
     BrowserModule,    
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [HttpClientService],
   bootstrap: [AppComponent]
