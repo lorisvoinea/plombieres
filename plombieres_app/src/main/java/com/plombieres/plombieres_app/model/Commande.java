@@ -24,6 +24,14 @@ public class Commande {
 	public Commande() {
 	}
 	
+	public Commande(Commande commande) {
+		super();
+		this.idCommande = commande.idCommande;
+		this.offre = commande.offre;
+		this.idPersonne = commande.idPersonne;
+		this.total = commande.total;
+	}
+	
 	public Commande(int idCommande, int offre, int idPersonne, int total) {
 		super();
 		this.idCommande = idCommande;

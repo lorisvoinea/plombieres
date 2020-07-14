@@ -68,13 +68,28 @@ public class PanierController {
     public ResponseEntity<?> creerPersonne(@RequestBody Personne personne) {
 
         try {
-            Personne userId = personneService.createUser(personne);
+            Personne pers = personneService.creerPersonne(personne);
 
-            if (userId == null)
+            if (pers == null)
                 return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
-            System.out.println(personne);
 
-            return ResponseEntity.created(URI.create("http://127.0.0.1:8080/personne/" + userId)).build();
+            return ResponseEntity.created(URI.create("http://127.0.0.1:8080/personne/" + pers.getIdPersonne())).build();
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().header("message", e.getMessage()).build();
+        }
+    }
+    
+    @PostMapping("/commande")
+    public ResponseEntity<?> creerCommande(@RequestBody Commande commande) {
+
+        try {
+            Commande com = commandeService.creerCommande(commande);
+
+            if (com == null)
+                return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
+
+            return ResponseEntity.created(URI.create("http://127.0.0.1:8080/commande/" + com.getIdCommande())).build();
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().header("message", e.getMessage()).build();

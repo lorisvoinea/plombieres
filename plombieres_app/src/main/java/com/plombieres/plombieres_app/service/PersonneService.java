@@ -24,7 +24,7 @@ public class PersonneService implements IPersonneService  {
     }
     
     @Override
-    public Personne createUser(Personne personne) {
+    public Personne creerPersonne(Personne personne) {
         try {
             Personne personneCree = repository.save(new Personne(personne));
             return personneCree;

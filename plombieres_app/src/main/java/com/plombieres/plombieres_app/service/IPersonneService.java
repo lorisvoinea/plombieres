@@ -8,6 +8,6 @@ public interface IPersonneService {
 	
 	List<Personne> findAll();
 	
-	Personne createUser(Personne personne);
+	Personne creerPersonne(Personne personne);
 
 }

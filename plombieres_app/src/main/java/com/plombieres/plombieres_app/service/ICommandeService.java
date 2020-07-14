@@ -8,6 +8,6 @@ public interface ICommandeService {
 	
 	List<Commande> findAll();
 	
-	Commande save(Commande commande);
+	Commande creerCommande(Commande commande);
 	
 }
